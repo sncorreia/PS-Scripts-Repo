@@ -1,4 +1,6 @@
-﻿
+﻿# PS script developed to assign permissions to an MSI
+# To make it work, change the fields marked with the [TO CHANGE] tag
+
 # [TO CHANGE] Name of system-assigned or user-assigned managed service identity. (System-assigned use same name as resource).
 $MsiName = "<Your_MSI_Name>"
 
@@ -15,7 +17,7 @@ $permissions = @(
 $GraphAppId = "00000003-0000-0000-c000-000000000000" 
 
 
-# [TO CHANGE] Authenticate your Admin user - Change your tenantId 
+# Authenticate your Admin user - Change your tenantId 
 Connect-MgGraph -Scopes "User.Read.All","AppRoleAssignment.ReadWrite.All","Directory.Read.All"  -TenantId $tenantId -ContextScope Process 
 
 $msiSP = Get-MgServicePrincipal -Filter "displayName eq '$MsiName'"
